@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e7e7e7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graph.Controller">
+   <children>
+      <HBox layoutX="-1.0" layoutY="1.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <children>
+            <Pane fx:id="canvasPane" onMouseClicked="#onClicked" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" top="5.0" />
+               </HBox.margin>
+            </Pane>
+            <VBox prefHeight="390.0" prefWidth="150.0">
+               <children>
+                  <VBox prefHeight="144.0" prefWidth="150.0">
+                     <children>
+                        <RadioButton fx:id="nodeBtn" mnemonicParsing="false" selected="true" text="Node">
+                           <padding>
+                              <Insets bottom="5.0" left="10.0" />
+                           </padding>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="contorol" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="connectBtn" mnemonicParsing="false" text="Connect" toggleGroup="$contorol">
+                           <padding>
+                              <Insets bottom="5.0" left="10.0" top="5.0" />
+                           </padding>
+                        </RadioButton>
+                        <RadioButton fx:id="deleteBtn" mnemonicParsing="false" text="Delete" toggleGroup="$contorol">
+                           <padding>
+                              <Insets bottom="5.0" left="10.0" top="5.0" />
+                           </padding>
+                        </RadioButton>
+                        <RadioButton fx:id="searchBtn" mnemonicParsing="false" text="Search" toggleGroup="$contorol">
+                           <padding>
+                              <Insets bottom="5.0" left="10.0" />
+                           </padding>
+                        </RadioButton>
+                        <Line endX="100.0" startX="-30.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="10.0" top="5.0" />
+                           </VBox.margin>
+                        </Line>
+                        <ComboBox fx:id="algorithm" onAction="#initialization" prefWidth="150.0" promptText="Select">
+                           <items>
+                             <FXCollections fx:factory="observableArrayList">
+                               <String fx:value="DFS" />
+                               <String fx:value="BFS" />
+                               <String fx:value="Dijkstra" />
+                               <String fx:value="Kruskal" />
+                             </FXCollections>
+                           </items>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <HBox prefHeight="28.0" prefWidth="150.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" />
+                           </VBox.margin>
+                           <children>
+                              <Button fx:id="prevBtn" mnemonicParsing="false" onAction="#prev" prefWidth="60.0" text="Prev">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#next" prefHeight="24.0" prefWidth="60.0" text="Next">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <ListView fx:id="list" prefHeight="200.0" prefWidth="135.0" VBox.vgrow="ALWAYS">
+                     <padding>
+                        <Insets left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" right="5.0" />
+                     </VBox.margin>
+                  </ListView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
