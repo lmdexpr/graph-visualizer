@@ -8,7 +8,6 @@ import scalafx.collections.ObservableBuffer
 import graph.types._
 
 object Algorithm {
-  // 実行の開始などをログとして表示するためのヘルパー関数
   def messaging(title: String)(proc: Stack[Edge] => Unit) = {
     val stack = Stack[Edge]()
     println(s"${title} start")
@@ -17,7 +16,6 @@ object Algorithm {
     Animation(stack)
   }
 
-  // DFSの実装 inner_dfsが具体的な実装
   def dfs(node: Node) = messaging("DFS")(inner_dfs(node))
   private def inner_dfs(node: Node, visited: ObservableBuffer[String] = new ObservableBuffer[String])(stack: Stack[Edge]) {
     visited += node.id
@@ -35,7 +33,6 @@ object Algorithm {
     }
   }
   
-  // BFSの実装 inner_bfsが具体的な実装
   def bfs(node: Node) = messaging("BFS")(inner_bfs(Queue(node)))
   @tailrec
   private def inner_bfs(queue: Queue[Node], visited: ObservableBuffer[String] = new ObservableBuffer[String])(stack: Stack[Edge]) {
@@ -60,7 +57,6 @@ object Algorithm {
     inner_bfs(queue, visited)(stack)
   }
 
-  // dijkstraの実装 inner_dijkstraが具体的な実装
   def dijkstra(start: Node, goal: Node, nodes: Seq[Node]) = messaging("Dijkstra") { stack =>
     val (length, prevs) = (Map(start.id -> 0), Map[String, Edge]())
     val rev_stack = Stack[Edge]()
@@ -101,7 +97,6 @@ object Algorithm {
     inner_dijkstra(nodes, length, prevs)(stack)
   }
 
-  // kruskalの実装 Union-Find木を用いている
   def kruskal(nodes: Seq[Node], edges: ObservableBuffer[Edge]) = messaging("Kruskal") { stack =>
     val uf = UnionFind[Node](nodes)
 
